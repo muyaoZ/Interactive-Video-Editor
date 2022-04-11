@@ -1,0 +1,56 @@
+/* two columns */
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+    background:rgb(225, 225, 225);
+    outline: black solid 2px;
+    margin: 20px;
+}
+
+/* buttons */
+.button {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin: 1px 0px;
+    outline: rgb(50, 50, 50) solid 1px;
+    border-radius: 4px;
+}
+
+.delete {
+    background-color: #ED5252;
+    color: white;
+    outline: #4C0808 solid 1px;
+}
+
+.delete:hover {
+    background-color: #CF4848;
+}
+
+/* video player + canvas */
+video,canvas {
+    display: block;
+    position: absolute;
+}
+
+video {
+    width: 800px;
+    height: 400px;
+    outline: black solid 2px;
+}
+
+#placeholder {
+    height: 400px;
+    margin-bottom: 10px;
+}
+
