@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editing Page PHP</title>
+    <title>Editing Page</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/controls.css">
@@ -50,11 +50,12 @@
     </br>
     <button class="button delete" onclick="delVid();">Delete Current Video</button>
     <button class="button delete" onclick="clearCanvas();">Clear Anchors</button>
-    <button class="button" onclick="deleteAnchor();">Add/Move Anchor</button>
-    <button class="button" onclick="addMoveAnchor();">Delete Anchor</button>
+    <button class="button" onclick="addMoveAnchor();">Add/Move Anchor</button>
+    <button class="button" onclick="deleteAnchor();">Delete Anchor</button>
     
-    <!-- <button class="button" onclick="getAnchorData();">Get Anchor</button> -->
+    <button class="button" onclick="getAnchorData();">Get Anchor</button>
     <button class="button" onclick="saveAnchorData();">Save Anchor</button>
+    <button class="button" onclick="saveSpec();">Add specification</button>
 
     </br>
 

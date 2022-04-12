@@ -72,7 +72,6 @@ function handleMouseDown(e) {
                 radius: stdRadius,
                 color: "red"
             });
-            // writeAnchor();
             drawAll();
         }
         else {
@@ -80,7 +79,6 @@ function handleMouseDown(e) {
         }
     } else {
         if (isDelete) {
-            alert("deleting anchor");
             circles.splice(hit, 1);
             drawAll();
         }
@@ -152,21 +150,13 @@ $("#canvas").mouseout(function (e) {
 
 // delete anchor
 function deleteAnchor() {
-    alert("delete activated");
-    // var index = circles.indexOf(anchor);
-    // if (index > -1) {
-    //     circles.splice(index, 1);
-    //     getAnchorData();
-    // }
-    // else {
-    //     alert("An error occurred when deleting the anchor.");
-    // }
-    
+    alert("Deleting anchors");
     isDelete = true;
 }
 
 // add/move anchor
 function addMoveAnchor() {
+    alert("Adding/moving anchors");
     isDelete = false;
 }
 
@@ -183,7 +173,22 @@ function getAnchorData() {
     var videoname = video.split("/")[4].split(".")[0];
     if (!!video) {
         var filename = "../anchor/" + videoname + ".anchor";
+        $.get("../php/anchor.php?filename=" + filename);
         $("#anchorList").load("../php/anchorList.php?filename=" + filename);
+        $.get("../php/loadAnchor.php?filename=" + filename, function(data) {
+            circles = [];
+            data = data.split("<");
+            data.forEach(element => {
+                var anchor = element.split(",");
+                circles.push({
+                    x: anchor[0],
+                    y: anchor[1],
+                    radius: stdRadius,
+                    color: "red"
+                });
+            });
+            drawAll();
+        });
     }
     else {
         alert("No video selected.");
@@ -201,7 +206,7 @@ function saveAnchorData() {
             var x = element["x"];
             var y = element["y"];
             // timeStart,timeEnd,x,y,action
-            anchorInfo += "timeStart,timeEnd," + x + "," + y + ",action*";
+            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action*";
         });
         $.get("../php/saveAnchor.php?filename=" + filename + "&anchordata=" + anchorInfo);
         getAnchorData();
