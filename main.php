@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body onload="vidList()">
+<body onload="load()">
     <h1>Video Editing Page</h1>
 
     <div id="parentDiv">
@@ -52,10 +52,35 @@
     <button class="button delete" onclick="clearCanvas();">Clear Anchors</button>
     <button class="button" onclick="addMoveAnchor();">Add/Move Anchor</button>
     <button class="button" onclick="deleteAnchor();">Delete Anchor</button>
-    
     <button class="button" onclick="getAnchorData();">Get Anchor</button>
     <button class="button" onclick="saveAnchorData();">Save Anchor</button>
-    <button class="button" onclick="saveSpec();">Add specification</button>
+    <button class="button" onclick="test();">Test</button>
+    </br></br>
+    
+    <video style="display: none;" id="hiddenVid">
+        <source src="" type="video/mp4">
+    </video>
+
+    <!-- <form name="specForm" action="javascript:void(0);" onsubmit="return validateForm()" method="post">
+        Video number for starting video: <select id="startVid"></select></br>
+        Timestamp for start of video: <input type="number" id="timestamp" min="0"></br>
+        Default end of video action: 
+        <select id="defaultEnd">
+            <option>Stop</option>
+            <option>Jump to next video</option>
+        </select></br>
+        <input type="submit" value="Submit">
+    </form> -->
+    <form name="specForm" onsubmit="return false;" method="post">
+        Video number for starting video: <select id="startVid"></select></br>
+        Timestamp for start of video: <input type="text" id="timestamp" min="0"></br>
+        Default end of video action: 
+        <select id="defaultEnd">
+            <option>Stop</option>
+            <option>Jump to next video</option>
+        </select></br>
+        <input type="submit" value="Submit" onclick="validateForm()">
+    </form>
 
     </br>
 
@@ -77,7 +102,10 @@
     custom video controls: https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Video_player_styling_basics
     create and drag anchor: https://stackoverflow.com/a/23459746
     file exist: https://www.kirupa.com/html5/checking_if_a_file_exists.htm
-    popup question: https://surveyjs.io/Examples/Library/?id=survey-window&platform=jQuery -->
+    popup question: https://surveyjs.io/Examples/Library/?id=survey-window&platform=jQuery
+    form validation: https://www.w3schools.com/js/js_validation.asp
+    add option to form drowdown list: https://stackoverflow.com/a/10992349
+    video duration from url: https://stackoverflow.com/a/66444099-->
 
 </body>
 </html>

@@ -134,6 +134,7 @@ function handleMouseMove(e) {
 }
 
 // listen for mouse events
+// To-Do: make function to be called in editing
 $("#canvas").mousedown(function (e) {
     handleMouseDown(e);
 });
@@ -206,7 +207,7 @@ function saveAnchorData() {
             var x = element["x"];
             var y = element["y"];
             // timeStart,timeEnd,x,y,action
-            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action*";
+            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action,*";
         });
         $.get("../php/saveAnchor.php?filename=" + filename + "&anchordata=" + anchorInfo);
         getAnchorData();
