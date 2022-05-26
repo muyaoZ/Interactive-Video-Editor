@@ -2,6 +2,7 @@
 function load() {
     vidList();
     specForm();
+    setEdit();
 }
 
 // change video being played
@@ -14,6 +15,14 @@ function playVid(videoLink) {
 // refresh videoList
 function vidList() {
     $("#videoList").load("../php/videoList.php");
+
+    // alert("vidlist");
+    // save videoList to file
+    $.get("../php/vidListToStr.php", function(data) {
+        saveVidList(data);
+        alert("saved");
+    });
+    // alert("end");
 }
 
 // delete video file from folder
@@ -75,13 +84,19 @@ function validateForm() {
     var vid = document.getElementById("hiddenVid");
     
     vid.addEventListener('loadedmetadata', videoLoadedMetaData);
-    // alert(vid.duration);
-    // alert("1");
-    // alert("outside");
-
 }
 
-function test() {
-    var video = document.getElementById('video');
-    alert(video.duration);
+// reorder video list
+function reorderVid() {
+    vidList = [];
+    $.get("../php/vidListToStr.php", function(data) {
+        vidList = data.split("\n");
+    });
+    // reorder list (vid1\nvid2)
+
+    saveVidList(vidList);
+}
+
+function saveVidList(vidList) {
+    $.get("../php/saveVidList.php?filename=" + filename + "&data=" + vidList);
 }

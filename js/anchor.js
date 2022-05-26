@@ -1,3 +1,8 @@
+var editing = false;
+function setEdit() {
+    editing = true;
+}
+
 // canvas related variables
 // references to canvas and its context and its position on the page
 var canvas = document.getElementById("canvas");
@@ -72,6 +77,7 @@ function handleMouseDown(e) {
                 radius: stdRadius,
                 color: "red"
             });
+            alert("circle added")
             drawAll();
         }
         else {
@@ -136,17 +142,29 @@ function handleMouseMove(e) {
 // listen for mouse events
 // To-Do: make function to be called in editing
 $("#canvas").mousedown(function (e) {
-    handleMouseDown(e);
+    if (editing) {handleMouseDown(e);}
 });
 $("#canvas").mousemove(function (e) {
-    handleMouseMove(e);
+    if (editing) {handleMouseMove(e);}
 });
 $("#canvas").mouseup(function (e) {
-    handleMouseUp(e);
+    if (editing) {handleMouseUp(e);}
 });
 $("#canvas").mouseout(function (e) {
-    handleMouseUp(e);
+    if (editing) {handleMouseUp(e);}
 });
+// $("#canvas").mousedown(function (e) {
+//     handleMouseDown(e);
+// });
+// $("#canvas").mousemove(function (e) {
+//     handleMouseMove(e);
+// });
+// $("#canvas").mouseup(function (e) {
+//     handleMouseUp(e);
+// });
+// $("#canvas").mouseout(function (e) {
+//     handleMouseUp(e);
+// });
 
 
 // delete anchor
@@ -180,13 +198,16 @@ function getAnchorData() {
             circles = [];
             data = data.split("<");
             data.forEach(element => {
-                var anchor = element.split(",");
-                circles.push({
-                    x: anchor[0],
-                    y: anchor[1],
-                    radius: stdRadius,
-                    color: "red"
-                });
+                if (element != "") {
+                    var anchor = element.split(",");
+                    circles.push({
+                        x: anchor[0],
+                        y: anchor[1],
+                        radius: stdRadius,
+                        color: "red"
+                    });
+                }
+                
             });
             drawAll();
         });
@@ -203,11 +224,13 @@ function saveAnchorData() {
     var anchorInfo = "";
     if (!!video) {
         var filename = "../anchor/" + videoname + ".anchor";
+        var i = 0;
         circles.forEach(element => {
             var x = element["x"];
             var y = element["y"];
             // timeStart,timeEnd,x,y,action
-            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action,*";
+            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action," + i + "*";
+            i += 1;
         });
         $.get("../php/saveAnchor.php?filename=" + filename + "&anchordata=" + anchorInfo);
         getAnchorData();

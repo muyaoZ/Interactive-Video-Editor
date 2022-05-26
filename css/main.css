@@ -46,7 +46,8 @@ video,canvas {
 video {
     width: 800px;
     height: 400px;
-    outline: black solid 2px;
+    border: black solid 2px;
+    border-radius: 2px;
 }
 
 #placeholder {
