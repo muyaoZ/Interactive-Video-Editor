@@ -8,9 +8,9 @@
   if (file_exists($target_file)) {
     ?>
     <html>
-      <meta http-equiv="refresh" content="0; URL=../main.php" />
+      <meta http-equiv="refresh" content="0; URL=../html/main.html" />
       <body>
-        <p>You should automatically be redirected. If not then please click <a href="../main.php">here</a>.
+        <p>You should automatically be redirected. If not then please click <a href="../html/main.html">here</a>.
       </body>
     </html>
     <?php
@@ -22,9 +22,9 @@
   if ($_FILES["videoToUpload"]["size"] > 1000000000) {
     ?>
     <html>
-      <meta http-equiv="refresh" content="0; URL=../main.php" />
+      <meta http-equiv="refresh" content="0; URL=../html/main.html" />
       <body>
-        <p>You should automatically be redirected. If not then please click <a href="../main.php">here</a>.
+        <p>You should automatically be redirected. If not then please click <a href="../html/main.html">here</a>.
       </body>
     </html>
     <?php
@@ -36,9 +36,9 @@
   if($imageFileType != "mp4" && $imageFileType != "webm" && $imageFileType != "ogg") {
     ?>
     <html>
-      <meta http-equiv="refresh" content="0; URL=../main.php" />
+      <meta http-equiv="refresh" content="0; URL=../html/main.html" />
       <body>
-        <p>You should automatically be redirected. If not then please click <a href="../main.php">here</a>.
+        <p>You should automatically be redirected. If not then please click <a href="../html/main.html">here</a>.
       </body>
     </html>
     <?php
@@ -54,9 +54,9 @@
     if (move_uploaded_file($_FILES["videoToUpload"]["tmp_name"], $target_file)) { 
       ?>
       <html>
-        <meta http-equiv="refresh" content="0; URL=../main.php" />
+        <meta http-equiv="refresh" content="0; URL=../html/main.html" />
         <body>
-          <p>You should automatically be redirected. If not then please click <a href="../main.php">here</a>.
+          <p>You should automatically be redirected. If not then please click <a href="../html/main.html">here</a>.
         </body>
       </html>
       <?php
@@ -64,9 +64,9 @@
     } else {
       ?>
       <html>
-        <meta http-equiv="refresh" content="0; URL=../main.php" />
+        <meta http-equiv="refresh" content="0; URL=../html/main.html" />
         <body>
-          <p>You should automatically be redirected. If not then please click <a href="../main.php">here</a>.
+          <p>You should automatically be redirected. If not then please click <a href="../html/main.html">here</a>.
         </body>
       </html>
       <?php
