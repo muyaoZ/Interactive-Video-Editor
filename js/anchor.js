@@ -229,7 +229,7 @@ function saveAnchorData() {
             var x = element["x"];
             var y = element["y"];
             // timeStart,timeEnd,x,y,action
-            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action," + i + "*";
+            anchorInfo += "false,timeStart,timeEnd," + x + "," + y + ",action," + "*";
             i += 1;
         });
         $.get("../php/saveAnchor.php?filename=" + filename + "&anchordata=" + anchorInfo);
