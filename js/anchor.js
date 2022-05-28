@@ -77,7 +77,7 @@ function handleMouseDown(e) {
                 radius: stdRadius,
                 color: "red"
             });
-            alert("circle added")
+            // alert("circle added")
             drawAll();
         }
         else {
